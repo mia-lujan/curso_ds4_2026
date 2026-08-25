@@ -14,10 +14,18 @@ class Athlete:
 def main():
     """TEST THE CLASS"""
     a = Athlete("Ana G", 25, "200m")
-    b = Athlete("J", 30, "100m")
-    c = Athlete("", 28, "400m")
+    b = Athlete("Usain Bolt", 30, "100m")
+    c = Athlete("si", 28, "400m")
 
+
+    print(a)
+    print(b)
     a.display()
     b.display()
-    c = eval(repr(b))
-    print(c)
+    print(repr(a))
+    print(repr(b))
+    #c = eval(repr(b))
+    #print(c)
+    
+if __name__ == "__main__":
+    main()

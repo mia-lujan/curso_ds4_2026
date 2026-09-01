@@ -4,7 +4,7 @@ Author: Mia Luján
 Date: Aug 26,2026
 """
 from Athlete import Athlete
-from Sport import Sport
+from Sports import Sport
 class Team:
     """ Team class represents a team in the tournament. It has a name, a sport and a list of athletes."""
     def __init__(self, name:str, sport:Sport):

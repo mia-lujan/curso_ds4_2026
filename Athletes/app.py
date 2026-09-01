@@ -1,8 +1,8 @@
 """Main app for the Athletes module. It creates teams, athletes, and simulates a game between them. """
-from .Game import Game
-from .Team import Team
-from .Sports import Sport
-from .Athlete import Athlete
+from Game import Game
+from Team import Team
+from Sports import Sport
+from Athlete import Athlete
 import json
 
 def load_json(file_path):

@@ -3,7 +3,7 @@ Game class for managing the game logic.
 """
 import random
 from Team import Team
-from Sport import Sport
+from Sports import Sport
 from Athlete import Athlete
 
 class Game:

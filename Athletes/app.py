@@ -17,6 +17,20 @@ def main():
     #Load data from JSON files
     tournament_data = load_json(r"C:\\Users\\Lenovo\Documents\\desarrollo4\\curso_ds4_2026\\Athletes\\tournament.json")
     print("Tournament:", tournament_data)
+    convert_json_to_teams(tournament_data)
+
+def convert_json_to_teams(json_data):
+    """Converts JSON data into a list of Team objects."""
+    teams = []
+    for team_data in json_data:
+        team_name = team_data['name']
+        sport_name = team_data['sport']['name']
+        sport_league = team_data['sport']['league']
+        sport_num_players = team_data['sport']['num_players']
+        print(team_name)
+        print(sport_name)
+        print(sport_league)
+        print(sport_num_players)
 
 if __name__ == "__main__":
     main()

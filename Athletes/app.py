@@ -3,6 +3,7 @@ from Game import Game
 from Team import Team
 from Sports import Sport
 from Athlete import Athlete
+from itertools import combinations
 import json
 
 def load_json(file_path):
@@ -16,7 +17,18 @@ def main():
     """Main function to create teams, athletes, and simulate a game."""
     #Load data from JSON files
     tournament_data = load_json(r"C:\\Users\\Lenovo\Documents\\desarrollo4\\curso_ds4_2026\\Athletes\\tournament.json")
-    print("Tournament:", tournament_data)
+    teams = convert_json_to_teams(tournament_data)
+    
+    # Create all possible combinations of two teams
+    team_combinations = list(combinations(teams, 2))
+    for local, visitor in team_combinations:
+        print(f"Match: {local.name} vs {visitor.name}")
+        game = Game(local, visitor)
+        game.play()
+        game.display()
+        print("\n")
+
+    #print("Tournament:", tournament_data)
     convert_json_to_teams(tournament_data)
 
 def convert_json_to_teams(json_data):
@@ -27,10 +39,16 @@ def convert_json_to_teams(json_data):
         sport_name = team_data['sport']['name']
         sport_league = team_data['sport']['league']
         sport_num_players = team_data['sport']['num_players']
-        print(team_name)
-        print(sport_name)
-        print(sport_league)
-        print(sport_num_players)
+        print("---",team_name,sport_name,sport_league,sport_num_players)
+        sport = Sport(sport_name, sport_num_players, sport_league)
+        team = Team(team_name, sport)
+        for athlete_data in team_data['athletes']:
+            athlete_name = athlete_data['name']
+            athlete_age = athlete_data['number']
+            athlete = Athlete(athlete_name, athlete_age, sport_name)
+            team.add_athlete(athlete)
+        teams.append(team)
+    return teams
 
 if __name__ == "__main__":
     main()
